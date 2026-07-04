@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday! 🎁</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151f32;
+            --accent-color: #3b82f6;
+            --accent-success: #10b981;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #22324d;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+            max-width: 600px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 0.75rem;
+        }
+
+        header p {
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 950px;
+        }
+
+        .coupon-card {
+            background-color: var(--card-bg);
+            border: 2px dashed var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .coupon-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-color);
+        }
+
+        .tag {
+            align-self: flex-start;
+            background: rgba(59, 130, 246, 0.15);
+            color: var(--accent-color);
+            padding: 0.25rem 0.6rem;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .coupon-card h3 {
+            margin: 1rem 0 0.5rem 0;
+            font-size: 1.3rem;
+        }
+
+        .coupon-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        button {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 0.95rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #2563eb;
+        }
+
+        button.redeemed {
+            background-color: var(--accent-success);
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Happy Birthday! 🎁</h1>
+        <p>I feel awful that I didn't get you a real gift on time, especially since you got me something so good. Since distance is a thing right now, here's a digital coupon book you can cash in whenever you want.</p>
+    </header>
+
+    <div class="grid">
+        <!-- Coupon 1 -->
+        <div class="coupon-card">
+            <span class="tag">Gaming</span>
+            <h3>Co-op Game on Me</h3>
+            <p>Valid for any game on Steam (or whatever platform) up to $30. Next time a cool multiplayer game drops that we should play, I got your copy.</p>
+            <button onclick="redeem(this, 'Co-op Game on Me')">Redeem Coupon</button>
+        </div>
+
+        <!-- Coupon 2 -->
+        <div class="coupon-card">
+            <span class="tag">Food</span>
+            <h3>Late Night Delivery</h3>
+            <p>For a night when you're gaming late, studying, or just completely lazy to cook. Hit redeem and I'll DoorDash some food straight to your place.</p>
+            <button onclick="redeem(this, 'Late Night Delivery')">Redeem Coupon</button>
+        </div>
+
+        <!-- Coupon 3 -->
+        <div class="coupon-card">
+            <span class="tag">Hangout</span>
+            <h3>Stream Watch Party</h3>
+            <p>You pick the movie, show, or absolute garbage YouTube rabbit hole. I supply the Discord stream, full attention, and zero complaints.</p>
+            <button onclick="redeem(this, 'Stream Watch Party')">Redeem Coupon</button>
+        </div>
+    </div>
+
+    <script>
+        function redeem(button, couponName) {
+            // Check if already redeemed
+            if (button.classList.contains('redeemed')) return;
+
+            // Change button appearance
+            button.classList.add('redeemed');
+            button.innerText = '✓ Text me to claim!';
+            
+            // Pop up instructions
+            alert(`Coupon claimed!\n\nTo use it, screenshot this or text me:\n"Hey, I'm officialy redeeming my coupon for: ${couponName}!"`);
+        }
+    </script>
+</body>
+</html>
