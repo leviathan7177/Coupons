@@ -139,7 +139,7 @@
             border: 1px solid var(--border);
             border-radius: 10px;
             overflow: hidden;
-            aspect-ratio: 1 / 1; /* Makes them clean squares, change or remove if needed */
+            aspect-ratio: 1 / 1;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -148,8 +148,31 @@
         .collage-item img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* Ensures images fill the square nicely without stretching */
+            object-fit: cover;
             display: block;
+        }
+
+        /* Audio Player Styling */
+        .audio-player-container {
+            text-align: center; 
+            margin-top: 3rem; 
+            padding: 1.25rem; 
+            background-color: var(--card-bg); 
+            border-radius: 12px; 
+            width: 100%;
+            max-width: 400px; 
+            border: 1px solid var(--border);
+        }
+
+        .audio-player-container p {
+            margin-bottom: 0.75rem; 
+            font-weight: bold; 
+            color: var(--accent-color);
+            font-size: 0.95rem;
+        }
+
+        audio {
+            width: 100%;
         }
     </style>
 </head>
@@ -194,7 +217,6 @@
     <div class="collage-section">
         <h2>Memories 📸</h2>
         <div class="collage-grid">
-            <!-- To add your pictures, place them in the same GitHub folder and replace 'photo1.jpg' with your actual file names -->
             <div class="collage-item">
                 <img src="1.jpg" alt="Memory 1">
             </div>
@@ -216,6 +238,15 @@
         </div>
     </div>
 
+    <!-- Audio Player Container -->
+    <div class="audio-player-container">
+        <p>🎵 Birthday Soundtrack</p>
+        <audio controls id="birthday-track">
+            <source src="parabolacut.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+    </div>
+
     <script>
         function redeem(button, couponName) {
             if (button.classList.contains('redeemed')) return;
@@ -223,10 +254,16 @@
             button.classList.add('redeemed');
             button.innerText = '✓ Text me to claim!';
             
-            // Fixed the syntax error here:
             alert(`Coupon claimed!\n\nTo use it, screenshot this or text me:\n"Hey, I'm officially redeeming my coupon for: ${couponName}!"`);
         }
+
+        // Automatically trigger the music play track on his very first click or interaction on the screen
+        document.body.addEventListener('click', function() {
+            const audio = document.getElementById('birthday-track');
+            if (audio && audio.paused) {
+                audio.play().catch(err => console.log("Autoplay caught/prevented by browser security policies. User must press play manually."));
+            }
+        }, { once: true });
     </script>
 </body>
 </html>
-
