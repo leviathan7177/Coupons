@@ -3,18 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Happy Birthday Titan! 🎁</title>
+    <title>Happy Birthday Titan</title>
     <style>
-        :root {
-            --bg-color: #0b0f19;
-            --card-bg: #151f32;
-            --accent-color: #3b82f6;
-            --accent-success: #10b981;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border: #22324d;
-        }
-
+        /* General page reset with a warm, cozy dark-slate color palette */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -22,11 +13,11 @@
         }
 
         body {
-            font-family: system-ui, -apple-system, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: #121620;
+            color: #e2e8f0;
             min-height: 100vh;
-            padding: 2rem 1rem;
+            padding: 3rem 1.5rem;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -34,70 +25,78 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
-            max-width: 600px;
+            margin-bottom: 3.5rem;
+            max-width: 580px;
         }
 
         header h1 {
-            font-size: 2.5rem;
-            color: var(--accent-color);
-            margin-bottom: 0.75rem;
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #f1f5f9;
+            margin-bottom: 1rem;
+            letter-spacing: -0.02em;
         }
 
         header p {
-            color: var(--text-muted);
+            color: #94a3b8;
             line-height: 1.6;
             font-size: 1.05rem;
         }
 
+        /* Creating a warmer layout resembling physical ticket coupons rather than modular dashboard widgets */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
+            gap: 2rem;
             width: 100%;
-            max-width: 950px;
+            max-width: 900px;
             margin-bottom: 4rem;
         }
 
         .coupon-card {
-            background-color: var(--card-bg);
-            border: 2px dashed var(--border);
-            border-radius: 14px;
+            background-color: #1e2538;
+            border: 1px solid #2d3750;
+            border-radius: 10px;
             padding: 1.75rem;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             position: relative;
-            transition: transform 0.2s, border-color 0.2s;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            /* Soft rotation for an organic, slightly scattered desk look */
+            transform: rotate(-0.5deg);
         }
 
-        .coupon-card:hover {
-            transform: translateY(-4px);
-            border-color: var(--accent-color);
+        .coupon-card:nth-child(even) {
+            transform: rotate(0.8deg);
         }
 
         .coupon-card h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #f8fafc;
             margin-bottom: 0.75rem;
-            font-size: 1.35rem;
-            color: var(--text-main);
+            border-bottom: 1px solid #2d3750;
+            padding-bottom: 0.5rem;
         }
 
         .coupon-card p {
-            color: var(--text-muted);
+            color: #cbd5e1;
             font-size: 0.95rem;
             line-height: 1.5;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
             flex-grow: 1;
         }
 
+        /* Simple, organic looking buttons rather than shiny pill-shaped SaaS buttons */
         button {
-            background-color: var(--accent-color);
-            color: white;
+            background-color: #3b82f6;
+            color: #ffffff;
             border: none;
             padding: 0.8rem;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 0.95rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
             cursor: pointer;
             width: 100%;
             transition: background-color 0.2s;
@@ -108,67 +107,88 @@
         }
 
         button.redeemed {
-            background-color: var(--accent-success);
+            background-color: #059669;
             cursor: not-allowed;
         }
 
-        /* Collage Section Styles */
+        /* Polaroid photo collage representing a classic handcrafted scrapbook look */
         .collage-section {
             width: 100%;
-            max-width: 950px;
+            max-width: 900px;
             text-align: center;
-            border-top: 1px solid var(--border);
-            padding-top: 3rem;
-            margin-top: 1rem;
+            border-top: 1px solid #2d3750;
+            padding-top: 3.5rem;
+            margin-top: 2rem;
         }
 
         .collage-section h2 {
-            font-size: 1.8rem;
-            margin-bottom: 1.5rem;
-            color: var(--text-main);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 2.5rem;
+            color: #f1f5f9;
         }
 
         .collage-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 2.5rem;
+            padding: 1rem;
         }
 
+        /* Polaroid styling */
         .collage-item {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            overflow: hidden;
-            aspect-ratio: 1 / 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: #ffffff;
+            padding: 12px 12px 30px 12px;
+            border-radius: 2px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4);
+            transition: transform 0.2s ease;
+            display: inline-block;
+        }
+
+        /* Subtle randomized rotations to make the polaroids look physically laid out on a table */
+        .collage-item:nth-child(3n+1) {
+            transform: rotate(-2deg);
+        }
+        .collage-item:nth-child(3n+2) {
+            transform: rotate(1.5deg);
+        }
+        .collage-item:nth-child(3n+3) {
+            transform: rotate(-1deg);
+        }
+
+        .collage-item:hover {
+            transform: scale(1.03) rotate(0deg);
+            z-index: 10;
         }
 
         .collage-item img {
             width: 100%;
-            height: 100%;
+            aspect-ratio: 1 / 1;
             object-fit: cover;
             display: block;
+            border: 1px solid #e2e8f0;
         }
 
-        /* Audio Player Styling */
+        /* Simple, clean soundtrack box */
         .audio-player-container {
             text-align: center; 
-            margin-top: 3rem; 
-            padding: 1.25rem; 
-            background-color: var(--card-bg); 
-            border-radius: 12px; 
+            margin-top: 5rem; 
+            padding: 1.5rem; 
+            background-color: #1e2538; 
+            border-radius: 8px; 
             width: 100%;
             max-width: 400px; 
-            border: 1px solid var(--border);
+            border: 1px solid #2d3750;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
 
         .audio-player-container p {
-            margin-bottom: 0.75rem; 
-            font-weight: bold; 
-            color: var(--accent-color);
+            margin-bottom: 1rem; 
+            font-weight: 600; 
+            color: #3b82f6;
             font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
         audio {
@@ -179,7 +199,7 @@
 <body>
 
     <header>
-        <h1>Happy Birthday Titan! 🎁</h1>
+        <h1>Happy Birthday Titan</h1>
         <p>I feel awful that I didn't get you a real gift on time, especially since you got me something so good. Happy birthday Titan! I had a great time watching fireworks with you yesterday. Happy 19th!</p>
     </header>
 
@@ -187,35 +207,35 @@
         <!-- Coupon 1 -->
         <div class="coupon-card">
             <h3>Game on Me</h3>
-            <p>Valid for any game or item on Steam valued at $20 or under. Let me know what you want on your wishlist, and I'll send it over.</p>
+            <p>Valid for any game or item on Steam valued at $20 or under.</p>
             <button onclick="redeem(this, 'Game on Me')">Redeem Coupon</button>
         </div>
 
         <!-- Coupon 2 -->
         <div class="coupon-card">
             <h3>Wild Card</h3>
-            <p>Make your own coupon! You can choose whatever terms you want for this one, and I have to honor it.</p>
+            <p>Make your own coupon! You can choose whatever terms you want.</p>
             <button onclick="redeem(this, 'Wild Card')">Redeem Coupon</button>
         </div>
 
         <!-- Coupon 3 -->
         <div class="coupon-card">
             <h3>Custom Drawing</h3>
-            <p>A custom piece of art made by yours truly. It can be a portrait of you, a favorite character, or absolutely anything else you want me to draw.</p>
+            <p>A custom piece of art made by yours truly. It can be a portrait of you,anything I choose,ect.</p>
             <button onclick="redeem(this, 'Custom Drawing')">Redeem Coupon</button>
         </div>
 
         <!-- Coupon 4 -->
         <div class="coupon-card">
             <h3>Media Recommendation</h3>
-            <p>I will completely open-mindedly watch any one show or movie recommendation of your choosing. No arguments, no complaints.</p>
+            <p>I will completely and open mindedly watch any one show or movie recommendation of your choosing.</p>
             <button onclick="redeem(this, 'Media Recommendation')">Redeem Coupon</button>
         </div>
     </div>
 
     <!-- Photo Collage Section -->
     <div class="collage-section">
-        <h2>Memories 📸</h2>
+        <h2>Memories</h2>
         <div class="collage-grid">
             <div class="collage-item">
                 <img src="1.jpg" alt="Memory 1">
@@ -240,7 +260,7 @@
 
     <!-- Audio Player Container -->
     <div class="audio-player-container">
-        <p>🎵 Birthday Soundtrack</p>
+        <p>Birthday Soundtrack</p>
         <audio controls id="birthday-track">
             <source src="parabolacut.mp3" type="audio/mpeg">
             Your browser does not support the audio element.
@@ -252,12 +272,12 @@
             if (button.classList.contains('redeemed')) return;
 
             button.classList.add('redeemed');
-            button.innerText = '✓ Text me to claim!';
+            button.innerText = 'Text me to claim!';
             
             alert(`Coupon claimed!\n\nTo use it, screenshot this or text me:\n"Hey, I'm officially redeeming my coupon for: ${couponName}!"`);
         }
 
-        // Automatically trigger the music play track on his very first click or interaction on the screen
+        // Automatically trigger the music play track on first user click or touch anywhere on the screen
         document.body.addEventListener('click', function() {
             const audio = document.getElementById('birthday-track');
             if (audio && audio.paused) {
@@ -267,4 +287,3 @@
     </script>
 </body>
 </html>
- 
